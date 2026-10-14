@@ -3,51 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🇭🇺 Βουδαπέστη 2027: Dousis Ultimate Guide</title>
+    <meta name="theme-color" content="#2c3e50">
+    <title>🇭🇺 Βουδαπέστη 2027: Opera Garden Guide</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fdf6e3; color: #2c3e50; margin: 0; padding-bottom: 60px; }
-        
-        .header { background: #fff; position: sticky; top: 0; z-index: 900; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 10px 0; border-bottom: 3px solid #0984e3; }
-        h1 { text-align: center; color: #2c3e50; margin: 5px 0; font-size: 1.3rem; font-family: "Georgia", serif; }
-        
-        .filters-wrapper { display: flex; flex-direction: column; gap: 8px; margin-top: 5px; }
+        :root {
+            --bg: #fdf6e3; --card: #ffffff; --ink: #2c3e50; --muted: #666; --accent: #0984e3;
+            --accent-soft: #e1f5fe; --tip: #fcf3cf; --tip-border: #f1c40f; --money: #27ae60; --money-soft: #eafaf1;
+            --tv: #8e44ad; --tv-soft: #f4ecf7; --line: #eee;
+        }
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--ink); margin: 0; padding-bottom: 60px; }
+
+        .header { background: #fff; position: sticky; top: 0; z-index: 900; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 10px 0 8px; border-bottom: 3px solid var(--accent); }
+        h1 { text-align: center; margin: 5px 0; font-size: 1.25rem; font-family: Georgia, serif; }
+        .subtitle { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 4px; }
+
+        .converter-box { background: var(--accent-soft); padding: 8px 12px; margin: 6px 15px; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; gap: 6px; font-size: 0.85rem; border: 1px solid #b3e5fc; flex-wrap: wrap; }
+        .converter-box input { width: 80px; padding: 4px; border: 1px solid #01579b; border-radius: 4px; text-align: center; font-weight: bold; font-size: 0.9rem; }
+        .rate-note { width: 100%; font-size: 0.7rem; color: #01579b; text-align: center; }
+
+        .filters-wrapper { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
         .scroll-container { display: flex; overflow-x: auto; gap: 8px; padding: 0 15px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
         .scroll-container::-webkit-scrollbar { display: none; }
-        
-        .btn-filter { flex: 0 0 auto; padding: 8px 15px; border-radius: 20px; border: 1px solid #0984e3; background: #fff; font-size: 0.85rem; color: #555; cursor: pointer; transition: 0.2s; white-space: nowrap; }
-        .btn-filter.active { background: #0984e3; color: white; border-color: #0984e3; }
-        .date-btn.active { background: #2c3e50; border-color: #2c3e50; }
+        .btn-filter { flex: 0 0 auto; padding: 8px 14px; border-radius: 20px; border: 1px solid var(--accent); background: #fff; font-size: 0.85rem; color: #555; cursor: pointer; transition: 0.2s; white-space: nowrap; }
+        .btn-filter.active { background: var(--accent); color: #fff; }
+        .date-btn.active { background: var(--ink); border-color: var(--ink); }
+        .tv-btn { border-color: var(--tv); }
+        .tv-btn.active { background: var(--tv); border-color: var(--tv); }
 
-        .container { max-width: 600px; margin: 0 auto; padding: 15px; }
-        .card { background: white; border-radius: 4px; padding: 15px; margin-bottom: 15px; border-left: 5px solid #0984e3; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
-        
-        .category-tag { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #0984e3; letter-spacing: 1px; }
-        .name { font-size: 1.3rem; font-weight: 800; margin: 5px 0; color: #2c3e50; font-family: "Georgia", serif; }
-        
-        .distance-tag { font-size: 0.9rem; color: #555; display: block; margin-bottom: 5px; background: #eee; padding: 3px 8px; border-radius: 4px; width: fit-content; }
-        
-        .meta-info { display: flex; gap: 10px; margin-top: 8px; font-size: 0.9rem; }
-        .time-badge { background: #2c3e50; color: white; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; }
-        .cost-badge { background: #eafaf1; color: #27ae60; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; }
-        
-        .tip { background: #fcf3cf; color: #555; padding: 10px; border-radius: 4px; margin-top: 10px; font-style: italic; font-size: 0.95rem; border-left: 3px solid #f1c40f; }
+        .container { max-width: 620px; margin: 0 auto; padding: 15px; }
 
-        .card-actions { display: flex; gap: 10px; margin-top: 15px; }
-        .action-btn { flex: 1; padding: 12px; border-radius: 4px; text-align: center; font-weight: bold; text-decoration: none; font-size: 0.9rem; cursor: pointer; border: none; text-transform: uppercase; letter-spacing: 0.5px; }
-        .map-btn { background: white; color: #2c3e50; border: 1px solid #2c3e50; }
-        .info-btn { background: #2c3e50; color: white; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .day-header { background: var(--ink); color: #fff; border-radius: 6px; padding: 10px 14px; margin: 18px 0 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+        .day-header:first-child { margin-top: 0; }
+        .day-title { font-family: Georgia, serif; font-size: 1.1rem; font-weight: bold; }
+        .day-meta { font-size: 0.8rem; opacity: 0.9; }
 
-        /* MODAL */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; align-items: flex-end; justify-content: center; }
-        .modal-content { background: white; width: 100%; max-width: 600px; border-radius: 15px 15px 0 0; padding: 25px; max-height: 85vh; overflow-y: auto; animation: slideUp 0.3s ease-out; }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .modal-title { font-size: 1.4rem; font-weight: bold; color: #2c3e50; margin: 0; font-family: "Georgia", serif; }
-        .close-btn { background: none; border: none; font-size: 2rem; color: #888; cursor: pointer; }
-        .modal-body { font-size: 1.05rem; line-height: 1.6; color: #333; white-space: pre-line; }
-        .audio-controls { margin-top: 20px; display: flex; gap: 10px; border-top: 1px solid #eee; padding-top: 15px; }
-        .speak-btn { background: #0984e3; color: white; width: 100%; border-radius: 8px; padding: 12px; font-weight: bold; border: none; cursor: pointer;}
-        .stop-btn { background: #c0392b; color: white; display: none; width: 100%; border-radius: 8px; padding: 12px; font-weight: bold; border: none; cursor: pointer;}
-        
+        .card { background: var(--card); border-radius: 4px; padding: 15px; margin-bottom: 15px; border-left: 5px solid var(--accent); box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
+        .card.base { border-left-color: var(--ink); }
+        .category-tag { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent); letter-spacing: 1px; }
+        .name { font-size: 1.25rem; font-weight: 800; margin: 5px 0; font-family: Georgia, serif; }
+        .distance-tag { font-size: 0.88rem; color: #555; display: inline-block; margin-bottom: 5px; background: #eee; padding: 3px 8px; border-radius: 4px; }
+        .meta-info { display: flex; gap: 8px; margin-top: 8px; font-size: 0.9rem; flex-wrap: wrap; }
+        .time-badge { background: var(--ink); color: #fff; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; }
+        .cost-badge { background: var(--money-soft); color: var(--money); padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; }
+        .sources { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+        .src-chip { background: var(--tv-soft); color: var(--tv); font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 12px; }
+        .tip { background: var(--tip); color: #555; padding: 10px; border-radius: 4px; margin-top: 10px; font-style: italic; font-size: 0.95rem; border-left: 3px solid var(--tip-border); }
+
+        .card-actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+        .action-btn { flex: 1 1 30%; padding: 11px 8px; border-radius: 4px; text-align: center; font-weight: bold; text-decoration: none; font-size: 0.85rem; cursor: pointer; border: none; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .map-btn { background: #fff; color: var(--ink); border: 1px solid var(--ink); }
+        .info-btn { background: var(--ink); color: #fff; }
+        .book-btn { background: var(--money); color: #fff; }
+
+        .empty, .error-box { text-align: center; padding: 20px; color: #777; }
+        .error-box { background: #fdecea; color: #922; border-radius: 6px; font-size: 0.9rem; }
+
+        .footer { max-width: 620px; margin: 10px auto 0; padding: 0 15px; font-size: 0.78rem; color: var(--muted); }
+        .footer details { background: #fff; border-radius: 6px; padding: 10px 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.06); }
+        .footer summary { cursor: pointer; font-weight: bold; color: var(--ink); }
+        .footer a { color: var(--accent); word-break: break-word; }
+        .footer li { margin-bottom: 4px; }
+
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 2000; align-items: flex-end; justify-content: center; }
+        .modal-content { background: #fff; width: 100%; max-width: 620px; border-radius: 15px 15px 0 0; padding: 22px; max-height: 88vh; overflow-y: auto; animation: slideUp 0.3s ease-out; }
+        .modal-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 12px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+        .modal-title { font-size: 1.3rem; font-weight: bold; margin: 0; font-family: Georgia, serif; }
+        .close-btn { background: none; border: none; font-size: 2rem; color: #888; cursor: pointer; line-height: 1; }
+        .modal-body { font-size: 1.02rem; line-height: 1.6; color: #333; white-space: pre-line; }
+        .audio-controls { margin-top: 18px; display: flex; gap: 10px; border-top: 1px solid var(--line); padding-top: 14px; }
+        .speak-btn { background: var(--accent); color: #fff; width: 100%; border-radius: 8px; padding: 12px; font-weight: bold; border: none; cursor: pointer; }
+        .stop-btn { background: #c0392b; color: #fff; display: none; width: 100%; border-radius: 8px; padding: 12px; font-weight: bold; border: none; cursor: pointer; }
+
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
     </style>
 </head>
@@ -55,42 +82,84 @@
 
     <div class="header">
         <h1>🇭🇺 Βουδαπέστη 2027: Opera Garden Guide</h1>
+        <div class="subtitle">11–15 Ιανουαρίου 2027 · Με προτάσεις από Δούση, Bourdain, Rick Steves & Happy Traveller</div>
+
+        <div class="converter-box">
+            <span>💱</span>
+            <div><input type="number" id="hufInput" value="3630" inputmode="decimal" oninput="convert('huf')"> HUF</div>
+            <span>⇄</span>
+            <div><input type="number" id="eurInput" value="10" inputmode="decimal" oninput="convert('eur')"> €</div>
+            <div class="rate-note" id="rateNote">Ισοτιμία: φόρτωση…</div>
+        </div>
+
         <div class="filters-wrapper">
-            <div class="scroll-container">
-                <button class="btn-filter date-btn active" onclick="filterData('day', 0)">Όλα</button>
-                <button class="btn-filter date-btn" onclick="filterData('day', 1)">Δευ 11/1</button>
-                <button class="btn-filter date-btn" onclick="filterData('day', 2)">Τρί 12/1</button>
-                <button class="btn-filter date-btn" onclick="filterData('day', 3)">Τετ 13/1</button>
-                <button class="btn-filter date-btn" onclick="filterData('day', 4)">Πέμ 14/1</button>
-                <button class="btn-filter date-btn" onclick="filterData('day', 5)">Παρ 15/1</button>
+            <div class="scroll-container" id="dayFilters">
+                <button class="btn-filter date-btn active" data-day="0">Όλα</button>
+                <button class="btn-filter date-btn" data-day="1">Δευ 11/1</button>
+                <button class="btn-filter date-btn" data-day="2">Τρί 12/1</button>
+                <button class="btn-filter date-btn" data-day="3">Τετ 13/1</button>
+                <button class="btn-filter date-btn" data-day="4">Πέμ 14/1</button>
+                <button class="btn-filter date-btn" data-day="5">Παρ 15/1</button>
             </div>
-            <div class="scroll-container">
-                <button class="btn-filter active" onclick="filterData('cat', 'all')">Όλα</button>
-                <button class="btn-filter" onclick="filterData('cat', 'αξιοθέατα')">🏛️ Αξιοθέατα</button>
-                <button class="btn-filter" onclick="filterData('cat', 'φαγητό')">🥪 Φαγητό</button>
-                <button class="btn-filter" onclick="filterData('cat', 'διασκέδαση')">🎶 Διασκέδαση</button>
-                <button class="btn-filter" onclick="filterData('cat', 'μεταφορές')">🚌 Μεταφορές</button>
+            <div class="scroll-container" id="catFilters">
+                <button class="btn-filter cat-btn active" data-cat="all">Όλα</button>
+                <button class="btn-filter cat-btn" data-cat="αξιοθέατα">🏛️ Αξιοθέατα</button>
+                <button class="btn-filter cat-btn" data-cat="φαγητό">🥪 Φαγητό</button>
+                <button class="btn-filter cat-btn" data-cat="διασκέδαση">🎶 Διασκέδαση</button>
+                <button class="btn-filter cat-btn" data-cat="μεταφορές">🚌 Μεταφορές</button>
+                <button class="btn-filter cat-btn tv-btn" data-cat="tv">📺 Από εκπομπές</button>
             </div>
         </div>
     </div>
 
     <div class="container" id="content"></div>
 
-    <div id="infoModal" class="modal-overlay" onclick="closeModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
+    <div class="footer">
+        <details>
+            <summary>📚 Πηγές & σημειώσεις</summary>
+            <p>Οι τιμές είναι του 2026 και η Ουγγαρία τις αναπροσαρμόζει κάθε Ιανουάριο — έλεγξε πριν φύγεις. Οι περιγραφές των εκπομπών είναι δική μας περίληψη, όχι αυτούσια λόγια των παρουσιαστών.</p>
+            <ul>
+                <li><a href="https://digitaltvinfo.gr/eidiseis/media-news/oi-eikones-me-ton-taso-doysi-taxideyoyn-sti-voydapesti/" target="_blank" rel="noopener">«Εικόνες» με τον Τάσο Δούση – Βουδαπέστη Α' (OPEN, 8/12/2024)</a></li>
+                <li><a href="https://www.tvopen.gr/press/4615/otasosdoyshskaioic2abeikonesc2bbtaxideyoynsthboydapesthkyriakhstis1745" target="_blank" rel="noopener">«Εικόνες» με τον Τάσο Δούση – Βουδαπέστη Β' (OPEN, 15/12/2024)</a></li>
+                <li><a href="https://eatlikebourdain.com/anthony-bourdain-in-budapest/" target="_blank" rel="noopener">Anthony Bourdain: Parts Unknown S5E6 – Budapest (CNN, 2015)</a></li>
+                <li><a href="https://www.pbs.org/video/rick-steves-europe-budapest-best-hungary/" target="_blank" rel="noopener">Rick Steves' Europe – Budapest: The Best of Hungary (PBS)</a></li>
+                <li><a href="https://happytraveller.gr/budapest-things-to-do/" target="_blank" rel="noopener">Happy Traveller – 10 πράγματα στη Βουδαπέστη</a></li>
+                <li><a href="https://blog.wego.com/budapest-airport-to-city-centre/" target="_blank" rel="noopener">Wego – Αεροδρόμιο ➔ κέντρο (100Ε)</a></li>
+                <li><a href="https://souvenirs.vincent.voyage/budapest-parliament-tickets/" target="_blank" rel="noopener">Τιμές Κοινοβουλίου 2026</a></li>
+                <li><a href="https://thebettervacation.com/?p=177985" target="_blank" rel="noopener">Λουτρά Βουδαπέστης 2026 (Gellért κλειστό έως 2028)</a></li>
+                <li><a href="https://hungaryunlocked.com/fishermans-bastion-budapest-guide/" target="_blank" rel="noopener">Προμαχώνας Ψαράδων – τιμές 2026</a></li>
+                <li><a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-huf.en.html" target="_blank" rel="noopener">ΕΚΤ – ισοτιμία EUR/HUF</a></li>
+            </ul>
+        </details>
+    </div>
+
+    <div id="infoModal" class="modal-overlay">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
             <div class="modal-header">
                 <h2 id="modalTitle" class="modal-title"></h2>
-                <button class="close-btn" onclick="closeModal()">×</button>
+                <button class="close-btn" aria-label="Κλείσιμο" onclick="closeModal()">×</button>
             </div>
             <div id="modalBody" class="modal-body"></div>
             <div class="audio-controls">
-                <button id="speakBtn" class="action-btn speak-btn" onclick="startSpeaking()">🔊 Ακρόαση Ξεναγού</button>
-                <button id="stopBtn" class="action-btn stop-btn" onclick="stopSpeaking()">⏹️ Σταμάτημα</button>
+                <button id="speakBtn" class="speak-btn" onclick="startSpeaking()">🔊 Ακρόαση Ξεναγού</button>
+                <button id="stopBtn" class="stop-btn" onclick="stopSpeaking()">⏹️ Σταμάτημα</button>
             </div>
         </div>
     </div>
 
     <script>
+        // ---------- Ρυθμίσεις ----------
+        const FALLBACK_RATE = 363;        // HUF ανά 1 EUR (ΕΚΤ, Σεπτ. 2026)
+        let exchangeRate = FALLBACK_RATE;
+
+        const DAY_INFO = {
+            1: { label: "Δευτέρα 11 Ιανουαρίου", sun: "🌅 07:31 · 🌇 16:15" },
+            2: { label: "Τρίτη 12 Ιανουαρίου",   sun: "🌅 07:31 · 🌇 16:16" },
+            3: { label: "Τετάρτη 13 Ιανουαρίου", sun: "🌅 07:30 · 🌇 16:18" },
+            4: { label: "Πέμπτη 14 Ιανουαρίου",  sun: "🌅 07:30 · 🌇 16:19" },
+            5: { label: "Παρασκευή 15 Ιανουαρίου", sun: "🌅 07:29 · ✈️ 09:50" }
+        };
+
         let allData = [];
         let currentDisplayData = [];
         let currentDay = 0;
@@ -98,105 +167,197 @@
         let currentTextToSpeak = "";
         const synth = window.speechSynthesis;
 
-        fetch('locations.json')
-            .then(res => res.json())
-            .then(data => { allData = data; render(); })
-            .catch(err => console.error("Error loading JSON:", err));
+        // ---------- Μετατροπέας νομίσματος ----------
+        function fmtHuf(n) { return Math.round(n).toLocaleString('el-GR'); }
+        function fmtEur(n) { return n.toLocaleString('el-GR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
 
-        const removeAccents = (str) => {
-            return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-        };
-
-        function filterData(type, value) {
-            if (type === 'day') {
-                currentDay = value;
-                document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('active'));
+        function convert(from) {
+            const huf = document.getElementById('hufInput');
+            const eur = document.getElementById('eurInput');
+            if (from === 'huf') {
+                const v = parseFloat(huf.value) || 0;
+                eur.value = (v / exchangeRate).toFixed(2);
             } else {
-                currentCat = value;
-                document.querySelectorAll('.btn-filter:not(.date-btn)').forEach(b => b.classList.remove('active'));
+                const v = parseFloat(eur.value) || 0;
+                huf.value = Math.round(v * exchangeRate);
             }
-            event.target.classList.add('active');
+        }
+
+        function setRateNote(text) { document.getElementById('rateNote').textContent = text; }
+
+        // Ζωντανή ισοτιμία ΕΚΤ μέσω Frankfurter (δωρεάν, χωρίς κλειδί). Αν αποτύχει, μένει η αποθηκευμένη.
+        fetch('https://api.frankfurter.app/latest?from=EUR&to=HUF')
+            .then(r => r.ok ? r.json() : Promise.reject())
+            .then(d => {
+                if (d && d.rates && d.rates.HUF) {
+                    exchangeRate = d.rates.HUF;
+                    setRateNote(`Ισοτιμία ΕΚΤ ${d.date}: 1 € = ${exchangeRate.toFixed(2)} HUF`);
+                    convert('eur');
+                    render();
+                }
+            })
+            .catch(() => setRateNote(`Ισοτιμία εκτός σύνδεσης: 1 € ≈ ${FALLBACK_RATE} HUF`));
+        setRateNote(`Ισοτιμία: 1 € ≈ ${FALLBACK_RATE} HUF`);
+
+        // ---------- Βοηθητικά ----------
+        const removeAccents = (str) => (str || '').normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        const timeKey = (t) => /^\d{1,2}:\d{2}$/.test(t || '') ? t.padStart(5, '0') : '00:00';
+        const isBase = (item) => item.days && item.days.length > 1;
+
+        // ---------- Φόρτωση δεδομένων ----------
+        fetch('locations.json')
+            .then(res => { if (!res.ok) throw new Error(res.status); return res.json(); })
+            .then(data => { allData = data; render(); })
+            .catch(err => {
+                console.error("Error loading JSON:", err);
+                document.getElementById('content').innerHTML =
+                    '<div class="error-box">⚠️ Δεν φορτώθηκε το <b>locations.json</b>.<br>Οι browsers δεν το διαβάζουν όταν ανοίγεις το index.html απευθείας από τον δίσκο. Ανέβασε και τα δύο αρχεία μαζί σε hosting (π.χ. GitHub Pages / Netlify) ή άνοιξέ τα από τοπικό server.</div>';
+            });
+
+        // ---------- Φίλτρα ----------
+        document.getElementById('dayFilters').addEventListener('click', (e) => {
+            const btn = e.target.closest('.date-btn'); if (!btn) return;
+            document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentDay = Number(btn.dataset.day);
             render();
+        });
+        document.getElementById('catFilters').addEventListener('click', (e) => {
+            const btn = e.target.closest('.cat-btn'); if (!btn) return;
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentCat = btn.dataset.cat;
+            render();
+        });
+
+        function matchesCat(item) {
+            if (currentCat === 'all') return true;
+            if (currentCat === 'tv') return (item.sources || []).some(s => !/BKK|Wego/i.test(s));
+            return removeAccents(item.category).includes(removeAccents(currentCat));
+        }
+
+        function dayBudget(day) {
+            const sum = allData.filter(i => !isBase(i) && i.days && i.days.includes(day))
+                               .reduce((acc, i) => acc + (Number(i.costHuf) || 0), 0);
+            return sum;
+        }
+
+        // ---------- Απεικόνιση ----------
+        function cardHtml(item, index) {
+            const distanceHtml = item.distance ? `<span class="distance-tag">👣 ${esc(item.distance)}</span>` : '';
+            const searchQuery = encodeURIComponent((item.mapQuery || item.name) + " Budapest");
+            const mapUrl = `https://www.google.com/maps/search/?api=1&query=${searchQuery}`;
+            const chips = (item.sources || []).map(s => `<span class="src-chip">📺 ${esc(s)}</span>`).join('');
+            const bookBtn = item.book ? `<a href="${esc(item.book)}" target="_blank" rel="noopener" class="action-btn book-btn">🎫 Κράτηση</a>` : '';
+            return `
+                <div class="card ${isBase(item) ? 'base' : ''}">
+                    <div class="category-tag">${esc(item.category)}</div>
+                    <div class="name">${esc(item.name)}</div>
+                    ${distanceHtml}
+                    <div class="meta-info">
+                        <span class="time-badge">🕒 ${esc(item.time || '-')}</span>
+                        <span class="cost-badge">💰 ${esc(item.cost)}</span>
+                    </div>
+                    ${chips ? `<div class="sources">${chips}</div>` : ''}
+                    <div class="tip">💡 ${esc(item.tip)}</div>
+                    <div class="card-actions">
+                        <button class="action-btn info-btn" onclick="openModal(${index})">ℹ️ Ανάλυση</button>
+                        <a href="${mapUrl}" target="_blank" rel="noopener" class="action-btn map-btn">📍 Χάρτης</a>
+                        ${bookBtn}
+                    </div>
+                </div>`;
+        }
+
+        function dayHeaderHtml(day) {
+            const info = DAY_INFO[day]; if (!info) return '';
+            const b = dayBudget(day);
+            const budget = b ? ` · 💰 ≈ ${fmtHuf(b)} HUF (≈ €${fmtEur(b / exchangeRate)})/άτομο` : '';
+            return `<div class="day-header"><span class="day-title">${info.label}</span><span class="day-meta">${info.sun}${budget}</span></div>`;
         }
 
         function render() {
             const container = document.getElementById('content');
-            container.innerHTML = '';
+            if (!allData.length) return;
 
-            currentDisplayData = allData.filter(item => {
+            const filtered = allData.filter(item => {
                 const dayMatch = currentDay === 0 || (item.days && item.days.includes(currentDay));
-                let catMatch = true;
-                
-                if (currentCat !== 'all') {
-                    const itemCatClean = removeAccents(item.category);
-                    const searchCatClean = removeAccents(currentCat);
-                    catMatch = itemCatClean.includes(searchCatClean);
-                }
-                
-                return dayMatch && catMatch;
+                return dayMatch && matchesCat(item);
             });
 
-            if (currentDisplayData.length === 0) {
-                container.innerHTML = '<div style="text-align:center; padding:20px; color:#777;">Κενό Πρόγραμμα! Χαλαρώστε στο Opera Garden! ☕</div>';
+            if (filtered.length === 0) {
+                container.innerHTML = '<div class="empty">Κενό Πρόγραμμα! Χαλαρώστε στο Opera Garden! ☕</div>';
+                currentDisplayData = [];
                 return;
             }
 
-            currentDisplayData.forEach((item, index) => {
-                const distanceHtml = item.distance ? `<span class="distance-tag">👣 Από Βάση/Προηγούμενο: <b>${item.distance}</b></span>` : '';
-                const searchQuery = encodeURIComponent((item.mapQuery || item.name) + " Budapest");
-                const realMapUrl = `https://www.google.com/maps/search/?api=1&query=${searchQuery}`;
-
-                container.innerHTML += `
-                    <div class="card">
-                        <div class="category-tag">${item.category}</div>
-                        <div class="name">${item.name}</div>
-                        ${distanceHtml}
-                        <div class="meta-info">
-                            <span class="time-badge">🕒 ${item.time || '-'}</span>
-                            <span class="cost-badge">💰 ${item.cost}</span>
-                        </div>
-                        <div class="tip">💡 ${item.tip}</div>
-                        <div class="card-actions">
-                            <button class="action-btn info-btn" onclick="openModal(${index})">ℹ️ Πλήρης Ανάλυση</button>
-                            <a href="${realMapUrl}" target="_blank" class="action-btn map-btn">📍 Χάρτης</a>
-                        </div>
-                    </div>
-                `;
+            // Ταξινόμηση: η «βάση» πρώτη, μετά ανά ημέρα και ώρα
+            const firstDay = (i) => (currentDay ? currentDay : Math.min(...i.days));
+            filtered.sort((a, b) => {
+                if (isBase(a) !== isBase(b)) return isBase(a) ? -1 : 1;
+                return firstDay(a) - firstDay(b) || timeKey(a.time).localeCompare(timeKey(b.time));
             });
+
+            currentDisplayData = filtered;
+            let html = '';
+            let lastDay = null;
+            filtered.forEach((item, index) => {
+                if (!isBase(item)) {
+                    const d = firstDay(item);
+                    if (d !== lastDay) { html += dayHeaderHtml(d); lastDay = d; }
+                }
+                html += cardHtml(item, index);
+            });
+            container.innerHTML = html;
         }
 
+        // ---------- Modal & φωνητικός ξεναγός ----------
         function openModal(index) {
             const item = currentDisplayData[index];
             if (!item) return;
+            const text = item.description || item.tip || '';
             document.getElementById('modalTitle').innerText = item.name;
-            document.getElementById('modalBody').innerText = item.description || item.tip;
-            
-            let cleanText = (item.description || item.tip).replace(/\]+\]/g, '');
-            currentTextToSpeak = cleanText.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '');
-            
-            document.getElementById('infoModal').style.display = 'flex';
+            document.getElementById('modalBody').innerText = text;
+
+            // Αφαίρεση emoji/συμβόλων ώστε η φωνή να διαβάζει μόνο κείμενο
+            currentTextToSpeak = text
+                .replace(/\p{Extended_Pictographic}/gu, '')
+                .replace(/[•➔→⇄⚠️️]/g, ' ')
+                .replace(/\s{2,}/g, ' ')
+                .trim();
+
             stopSpeaking();
+            document.getElementById('infoModal').style.display = 'flex';
         }
 
         function closeModal() {
             document.getElementById('infoModal').style.display = 'none';
             stopSpeaking();
         }
+        document.getElementById('infoModal').addEventListener('click', (e) => { if (e.target.id === 'infoModal') closeModal(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+        function pickGreekVoice() {
+            if (!synth) return null;
+            const voices = synth.getVoices();
+            return voices.find(v => v.lang === 'el-GR') || voices.find(v => v.lang && v.lang.startsWith('el')) || null;
+        }
 
         function startSpeaking() {
-            if (synth.speaking) return;
-            if (currentTextToSpeak) {
-                const utterThis = new SpeechSynthesisUtterance(currentTextToSpeak);
-                utterThis.lang = 'el-GR';
-                utterThis.rate = 0.95;
-                utterThis.onend = () => toggleAudioButtons(false);
-                synth.speak(utterThis);
-                toggleAudioButtons(true);
-            }
+            if (!synth || !currentTextToSpeak) return;
+            synth.cancel();
+            const u = new SpeechSynthesisUtterance(currentTextToSpeak);
+            u.lang = 'el-GR';
+            const v = pickGreekVoice(); if (v) u.voice = v;
+            u.rate = 0.95;
+            u.onend = () => toggleAudioButtons(false);
+            u.onerror = () => toggleAudioButtons(false);
+            synth.speak(u);
+            toggleAudioButtons(true);
         }
 
         function stopSpeaking() {
-            if (synth.speaking) synth.cancel();
+            if (synth && (synth.speaking || synth.pending)) synth.cancel();
             toggleAudioButtons(false);
         }
 
@@ -204,6 +365,8 @@
             document.getElementById('speakBtn').style.display = isSpeaking ? 'none' : 'block';
             document.getElementById('stopBtn').style.display = isSpeaking ? 'block' : 'none';
         }
+
+        convert('eur');
     </script>
 </body>
 </html>
